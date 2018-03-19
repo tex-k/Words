@@ -2,6 +2,12 @@
 
 class Controller {
     public function run() {
-        (new Renderer())->render("layout");
+        if (isset($_GET['a'])) {
+            $action = 'action' . ucfirst($_GET['a']);
+        } else {
+            $action = 'actionIndex';
+        }
+
+        $this->$action();
     }
 }

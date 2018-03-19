@@ -10,8 +10,8 @@
     <header class="header">
         <menu class="menu">
             <ul class="menu__ul">
-                <li class="menu__li"><a href="" class="menu__a">Главная</a></li>
-                <li class="menu__li"><a href="" class="menu__a">Тест</a></li>
+                <li class="menu__li"><a href="/" class="menu__a">Главная</a></li>
+                <li class="menu__li"><a href="/?a=test" class="menu__a">Тест</a></li>
             </ul>
         </menu>
     </header>
