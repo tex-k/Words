@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-<div class="container">
-    <header class="header">
-        <menu class="menu">
-            <ul class="menu__ul">
-                <li class="menu__li"><a href="/" class="menu__a">Главная</a></li>
-                <li class="menu__li"><a href="/?a=test" class="menu__a">Тест</a></li>
-            </ul>
-        </menu>
-    </header>
-
-    <main class="main">
-        <form action="" class="test">
-            <input type="text">
-            <br>
-            <input class="submit" type="submit" value="Проверить">
-        </form>
-    </main>
-
-    <footer class="footer">
-
-    </footer>
-</div>
-</body>
-</html>
+<form action="" class="test">
+    <input type="text">
+    <br>
+    <input class="submit" type="submit" value="Проверить">
+</form>
