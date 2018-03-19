@@ -1,8 +1,9 @@
 $width-page: 1000px
 $height-header: 50px
-$bgc-page: deepskyblue
-$bgc-header: blue
-$bgc-header-highlight: $bgc-header - #00003f
+$bgc-page: lightblue
+$bgc-header: royalblue
+$bgc-header-highlight: dodgerblue
+$font-color: midnightblue
 
 *
   margin: 0 auto
@@ -51,8 +52,6 @@ a
   background-color: $bgc-header
   margin-top: -2*$height-header
 
-//-----------------Главная-----------------
-
 .submit
   height: 30px
   border: none
@@ -66,12 +65,14 @@ a
     cursor: pointer
     background-color: $bgc-header-highlight
 
+//-----------------Главная-----------------
+
 .form-new
   &__block
     display: inline-block
-    color: darkblue
+    color: $font-color
 
 .form-search
   margin-top: 30px
   &__block
-    color: darkblue
+    color: $font-color

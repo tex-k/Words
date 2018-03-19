@@ -8,12 +8,12 @@ a {
 .container {
   width: 1000px;
   height: 100vh;
-  background-color: deepskyblue; }
+  background-color: lightblue; }
 
 .header {
   width: 100%;
   height: 50px;
-  background-color: blue; }
+  background-color: royalblue; }
 
 .menu__li {
   height: 50px;
@@ -28,7 +28,7 @@ a {
   padding-left: 10px;
   padding-right: 10px; }
   .menu__a:hover {
-    background-color: #0000c0; }
+    background-color: dodgerblue; }
 
 .main {
   width: 100%;
@@ -40,13 +40,13 @@ a {
 .footer {
   width: 100%;
   height: 50px;
-  background-color: blue;
+  background-color: royalblue;
   margin-top: -100px; }
 
 .submit {
   height: 30px;
   border: none;
-  background-color: blue;
+  background-color: royalblue;
   color: white;
   box-sizing: border-box;
   padding-left: 10px;
@@ -54,15 +54,15 @@ a {
   margin-top: 10px; }
   .submit:hover {
     cursor: pointer;
-    background-color: #0000c0; }
+    background-color: dodgerblue; }
 
 .form-new__block {
   display: inline-block;
-  color: darkblue; }
+  color: midnightblue; }
 
 .form-search {
   margin-top: 30px; }
   .form-search__block {
-    color: darkblue; }
+    color: midnightblue; }
 
 /*# sourceMappingURL=style.css.map */
