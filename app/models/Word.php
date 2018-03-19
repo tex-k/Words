@@ -52,4 +52,12 @@ class Word {
     {
         return $this->translate;
     }
+
+//    public function record() {
+//        $conn = mysqli_connect('localhost', 'aleksey', '1234', 'words');
+//
+//        $value = $this->value;
+//
+//        $conn->query("INSERT INTO en (id, word) VALUES ('1', $value)");
+//    }
 }

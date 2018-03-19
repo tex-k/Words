@@ -14,4 +14,15 @@ class Controller {
 
         $this->$action();
     }
+
+    /**
+     * Дефолтный вариант - переход на главную
+     */
+    protected function actionIndex() {
+        $this->redirect('/');
+    }
+
+    public function redirect(string $url) {
+        header('Location: ' . $url);
+    }
 }
