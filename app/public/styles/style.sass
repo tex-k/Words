@@ -1,0 +1,77 @@
+$width-page: 1000px
+$height-header: 50px
+$bgc-page: deepskyblue
+$bgc-header: blue
+$bgc-header-highlight: $bgc-header - #00003f
+
+*
+  margin: 0 auto
+  padding: 0
+
+a
+  text-decoration: none
+
+.container
+  width: $width-page
+  height: 100vh
+  background-color: $bgc-page
+
+.header
+  width: 100%
+  height: $height-header
+  background-color: $bgc-header
+
+.menu
+  &__li
+    height: $height-header
+    list-style: none
+    float: left
+
+  &__a
+    display: inline-block
+    height: $height-header
+    color: white
+    box-sizing: border-box
+    padding-top: 11px
+    padding-left: 10px
+    padding-right: 10px
+    &:hover
+      background-color: $bgc-header-highlight
+
+.main
+  width: 100%
+  height: 100vh
+  box-sizing: border-box
+  padding-top: 20px
+  padding-left: 5px
+
+.footer
+  width: 100%
+  height: $height-header
+  background-color: $bgc-header
+  margin-top: -2*$height-header
+
+//-----------------Главная-----------------
+
+.submit
+  height: 30px
+  border: none
+  background-color: $bgc-header
+  color: white
+  box-sizing: border-box
+  padding-left: 10px
+  padding-right: 10px
+  margin-top: 10px
+  &:hover
+    cursor: pointer
+    background-color: $bgc-header-highlight
+
+.form-new
+  &__block
+    display: inline-block
+    color: darkblue
+
+.form-search
+  margin-top: 30px
+  &__block
+    color: darkblue
