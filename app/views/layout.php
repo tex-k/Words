@@ -17,7 +17,7 @@
     </header>
 
     <main class="main">
-        <form action="" class="form-new">
+        <form action="" class="form-new" method="post">
             <div class="form-new__block">
                 <label for="form-new-input-en">Английский вариант</label>
                 <br>
