@@ -4,14 +4,14 @@ class PageController extends Controller {
     /**
      * Рендерит главную страницу
      */
-    public function actionIndex() {
+    protected function actionIndex() {
         (new Renderer())->render("index");
     }
 
     /**
      * Рендерит страницу теста
      */
-    public function actionTest() {
+    protected function actionTest() {
         (new Renderer())->render("test");
     }
 }

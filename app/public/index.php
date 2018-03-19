@@ -2,4 +2,4 @@
 
 include "../config/includes.php";
 
-(new PageController())->run();
+(new FrontController())->run();

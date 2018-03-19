@@ -6,9 +6,9 @@ class Renderer {
      */
     public function render(String $view) {
         ob_start();
-        include ROOT . "/views/" . $view . ".php";
+        include ROOT . "views/" . $view . ".php";
         $content = ob_get_clean();
 
-        include ROOT . "/views/layout.php";
+        include ROOT . "views/layout.php";
     }
 }
