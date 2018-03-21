@@ -54,10 +54,16 @@ class Word {
     }
 
 //    public function record() {
-//        $conn = mysqli_connect('localhost', 'aleksey', '1234', 'words');
 //
 //        $value = $this->value;
+//        $translate = $this->translate[0];
 //
-//        $conn->query("INSERT INTO en (id, word) VALUES ('1', $value)");
+//        Db::getConn()->query("INSERT INTO en (id, word) VALUES ('1', 'value')");
+//        Db::getConn()->query("INSERT INTO ru (id, word) VALUES ('1', '$translate')");
+//        $line = Db::getConn()->query("SELECT * FROM en")->fetch_all();
+//        $count = count($line);
+//        var_dump($count);exit;
+//        $word = Db::getConn()->query("SELECT * FROM en WHERE ")
+//        Db::getConn()->query("INSERT INTO relation (id, enId, ruId) VALUES ('1', '1', '1')");
 //    }
 }
