@@ -2,12 +2,12 @@
     <div class="form-new__block">
         <label for="form-new-input-en">Английский вариант</label>
         <br>
-        <input name="en" type="text" id="form-new-input-en">
+        <input name="en" type="text" id="form-new-input-en" required>
     </div>
     <div class="form-new__block">
         <label for="form-new-input-ru">Русский вариант</label>
         <br>
-        <input name="ru" type="text" id="form-new-input-ru">
+        <input name="ru" type="text" id="form-new-input-ru" required>
     </div>
     <br>
     <input class="submit" type="submit" value="Записать">

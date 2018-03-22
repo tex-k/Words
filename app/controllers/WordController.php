@@ -16,6 +16,7 @@ class WordController extends Controller {
 
             $word->record();
 
+            $this->redirect('/');
         } else {
             $this->redirect('/');
         }
