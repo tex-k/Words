@@ -1,5 +1,10 @@
 <?php
 
+namespace app\controllers;
+
+//use app\controllers\PageController;
+//use app\controllers\WordController;
+
 class FrontController extends Controller {
     /**
      * Определяет, какому контроллеру передать управление
@@ -14,6 +19,8 @@ class FrontController extends Controller {
         } else {
             $controller = 'PageController';
         }
+
+        $controller = 'app\controllers\\' . $controller;
 
         (new $controller())->run();
     }

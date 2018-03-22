@@ -1,5 +1,7 @@
 <?php
 
+namespace app\services;
+
 class Renderer {
     /**
      * @param String $view

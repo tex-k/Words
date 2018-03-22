@@ -1,5 +1,10 @@
 <?php
 
+namespace app\models;
+
+use app\services\Db;
+use app\services\StrGenerator;
+
 class Word {
     private $lang = '';
     private $value = '';
@@ -60,7 +65,7 @@ class Word {
 
         $id = (new StrGenerator())->generate();
 
-        Db::getConn()->query("INSERT INTO en (id, word) VALUES ('$id', 'value')");
+        Db::getConn()->query("INSERT INTO en (id, word) VALUES ('$id', '$value')");
 //        Db::getConn()->query("INSERT INTO ru (id, word) VALUES ('1', '$translate')");
 //        $line = Db::getConn()->query("SELECT * FROM en")->fetch_all();
 //        $count = count($line);

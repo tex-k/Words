@@ -1,5 +1,7 @@
 <?php
 
+namespace app\services;
+
 class StrGenerator {
     public function generate($length = 8) {
         $chars = 'abdefhiknrstyzABDEFGHKNQRSTYZ23456789';

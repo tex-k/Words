@@ -1,5 +1,7 @@
 <?php
 
+namespace app\config;
+
 include "main.php";
 include "../controllers/Controller.php";
 include "../controllers/FrontController.php";

@@ -1,5 +1,9 @@
 <?php
 
+namespace app\controllers;
+
+use app\models\Word;
+
 class WordController extends Controller {
     /**
      * Направляет новое слово на запись

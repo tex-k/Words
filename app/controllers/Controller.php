@@ -1,5 +1,7 @@
 <?php
 
+namespace app\controllers;
+
 class Controller {
     public function run() {
         if (isset($_GET['a'])) {

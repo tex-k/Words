@@ -1,5 +1,9 @@
 <?php
 
+namespace app\controllers;
+
+use app\services\Renderer;
+
 class PageController extends Controller {
     /**
      * Рендерит главную страницу
