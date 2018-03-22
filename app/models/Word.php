@@ -58,8 +58,8 @@ class Word {
         return $this->translate;
     }
 
-    public function record() {
-
+    public function record()
+    {
         $value = $this->value;
         $translate = $this->translate[0];
 
@@ -72,5 +72,20 @@ class Word {
         Db::getConn()->query("INSERT INTO en (id, word) VALUES ('$idEn', '$value')");
         Db::getConn()->query("INSERT INTO ru (id, word) VALUES ('$idRu', '$translate')");
         Db::getConn()->query("INSERT INTO relation (id, enId, ruId) VALUES ('$idRel', '$idEn', '$idRu')");
+    }
+
+    public function get()
+    {
+        $value = $this->value;
+
+        if ($this->lang == 'en') {
+            $en = Db::getConn()->query("SELECT * FROM en WHERE word = '$value'")->fetch_assoc();
+            $en =$en['id'];
+            $relation = Db::getConn()->query("SELECT * FROM relation WHERE enId = '$en'")->fetch_assoc();
+            $relation = $relation['ruId'];
+            $ru = Db::getConn()->query("SELECT * FROM ru WHERE id = '$relation'")->fetch_assoc();
+
+            array_push($this->translate, $ru['word']);
+        }
     }
 }

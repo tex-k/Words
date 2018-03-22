@@ -13,16 +13,16 @@
     <input class="submit" type="submit" value="Записать">
 </form>
 
-<form action="" class="form-search">
+<form action="/?c=word&a=translate" class="form-search" method="post">
     <div class="form-search__block">
         <label for="form-search-input-en">Английская фраза</label>
         <br>
-        <input type="text" id="form-search-input-en">
+        <input name="en" type="text" id="form-search-input-en">
     </div>
     <div class="form-search__block">
         <label for="form-search-input-ru">Русская фраза</label>
         <br>
-        <input type="text" id="form-search-input-ru">
+        <input name="ru" type="text" id="form-search-input-ru">
     </div>
     <input class="submit" type="submit" value="Перевести">
 </form>

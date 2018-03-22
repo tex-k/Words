@@ -6,7 +6,7 @@ use app\models\Word;
 
 class WordController extends Controller {
     /**
-     * Направляет новое слово на запись
+     * Создаёт объект слова и направляет его на запись
      */
     protected function actionRecord() {
         if (($_POST['en'] != '') && ($_POST['ru'] != '')) {
@@ -15,10 +15,20 @@ class WordController extends Controller {
             $word->setTranslate([$_POST['ru']]);
 
             $word->record();
+        }
 
-            $this->redirect('/');
-        } else {
-            $this->redirect('/');
+        $this->redirect('/');
+    }
+
+    protected function actionTranslate() {
+        if ($_POST['en'] != '') {
+            $word = new Word();
+            $word->setLang('en');
+            $word->setValue($_POST['en']);
+
+            $word->get();
+
+            var_dump($word->getTranslate()[0]);exit;
         }
     }
 }
