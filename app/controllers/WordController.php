@@ -10,7 +10,7 @@ class WordController extends Controller {
             $word->setValue($_POST['en']);
             $word->setTranslate([$_POST['ru']]);
 
-//            $word->record();
+            $word->record();
 
         } else {
             $this->redirect('/');

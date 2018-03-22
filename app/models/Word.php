@@ -53,17 +53,19 @@ class Word {
         return $this->translate;
     }
 
-//    public function record() {
-//
-//        $value = $this->value;
-//        $translate = $this->translate[0];
-//
-//        Db::getConn()->query("INSERT INTO en (id, word) VALUES ('1', 'value')");
+    public function record() {
+
+        $value = $this->value;
+        $translate = $this->translate[0];
+
+        $id = (new StrGenerator())->generate();
+
+        Db::getConn()->query("INSERT INTO en (id, word) VALUES ('$id', 'value')");
 //        Db::getConn()->query("INSERT INTO ru (id, word) VALUES ('1', '$translate')");
 //        $line = Db::getConn()->query("SELECT * FROM en")->fetch_all();
 //        $count = count($line);
 //        var_dump($count);exit;
 //        $word = Db::getConn()->query("SELECT * FROM en WHERE ")
 //        Db::getConn()->query("INSERT INTO relation (id, enId, ruId) VALUES ('1', '1', '1')");
-//    }
+    }
 }

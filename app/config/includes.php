@@ -8,3 +8,4 @@ include "../controllers/WordController.php";
 include "../models/Word.php";
 include "../services/Renderer.php";
 include "../services/Db.php";
+include "../services/StrGenerator.php";
