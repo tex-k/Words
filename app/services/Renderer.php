@@ -9,7 +9,13 @@ class Renderer {
      * @param String $view
      * @param Word $word
      */
-    public function render(String $view, Word $word = null) {
+    public function render(String $view) {
+        session_start();
+        if ($_SESSION['word']) {
+            $word = $_SESSION['word'];
+            $_SESSION['word'] = null;
+        }
+
         ob_start();
         include ROOT . "views/" . $view . ".php";
         $content = ob_get_clean();

@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var \app\models\Word $word
+ */
+?>
 <form action="/?c=word&a=record" class="form-new" method="post">
     <div class="form-new__block">
         <label for="form-new-input-en">Английский вариант</label>
@@ -17,7 +22,8 @@
     <div class="form-search__block">
         <label for="form-search-input-en">Английская фраза</label>
         <br>
-        <input name="en" type="text" id="form-search-input-en">
+        <input name="en" type="text" id="form-search-input-en" value="<?= ($word) ? $word->getValue() : '' ?>">
+        <span><?= ($word) ? $word->getTranslate()[0] : '' ?></span>
     </div>
     <div class="form-search__block">
         <label for="form-search-input-ru">Русская фраза</label>

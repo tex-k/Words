@@ -28,7 +28,12 @@ class WordController extends Controller {
 
             $word->get();
 
-            var_dump($word->getTranslate()[0]);exit;
+            session_start();
+            $_SESSION['word'] = $word;
+
+            $this->redirect('/');
+
+//            var_dump($word->getTranslate()[0]);exit;
         }
     }
 }
