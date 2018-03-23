@@ -4,12 +4,13 @@ namespace app\services;
 
 use app\models\Word;
 
-class Renderer {
+class Renderer
+{
     /**
      * @param String $view
-     * @param Word $word
      */
-    public function render(String $view) {
+    public function render(String $view)
+    {
         session_start();
         if ($_SESSION['word']) {
             $word = $_SESSION['word'];

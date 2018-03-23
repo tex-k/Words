@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
-class Controller {
-    public function run() {
+class Controller
+{
+    public function run()
+    {
         if (isset($_GET['a'])) {
             $action = 'action' . ucfirst($_GET['a']);
 
@@ -20,11 +22,13 @@ class Controller {
     /**
      * Дефолтный вариант - переход на главную
      */
-    protected function actionIndex() {
+    protected function actionIndex()
+    {
         $this->redirect('/');
     }
 
-    public function redirect(string $url) {
+    public function redirect(string $url)
+    {
         header('Location: ' . $url);
     }
 }

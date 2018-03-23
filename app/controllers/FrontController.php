@@ -5,11 +5,13 @@ namespace app\controllers;
 //use app\controllers\PageController;
 //use app\controllers\WordController;
 
-class FrontController extends Controller {
+class FrontController extends Controller
+{
     /**
      * Определяет, какому контроллеру передать управление
      */
-    protected function actionIndex() {
+    protected function actionIndex()
+    {
         if (isset($_GET['c'])) {
             $controller = ucfirst($_GET['c']) . 'Controller';
 

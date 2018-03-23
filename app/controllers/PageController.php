@@ -4,18 +4,21 @@ namespace app\controllers;
 
 use app\services\Renderer;
 
-class PageController extends Controller {
+class PageController extends Controller
+{
     /**
      * Рендерит главную страницу
      */
-    protected function actionIndex() {
+    protected function actionIndex()
+    {
         (new Renderer())->render("index");
     }
 
     /**
      * Рендерит страницу теста
      */
-    protected function actionTest() {
+    protected function actionTest()
+    {
         (new Renderer())->render("test");
     }
 }

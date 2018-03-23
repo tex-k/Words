@@ -4,11 +4,13 @@ namespace app\controllers;
 
 use app\models\Word;
 
-class WordController extends Controller {
+class WordController extends Controller
+{
     /**
      * Создаёт объект слова и направляет его на запись
      */
-    protected function actionRecord() {
+    protected function actionRecord()
+    {
         if (($_POST['en'] != '') && ($_POST['ru'] != '')) {
             $word = new Word();
             $word->setValue($_POST['en']);
@@ -20,7 +22,8 @@ class WordController extends Controller {
         $this->redirect('/');
     }
 
-    protected function actionTranslate() {
+    protected function actionTranslate()
+    {
         if ($_POST['en'] != '') {
             $word = new Word();
             $word->setLang('en');
@@ -32,8 +35,6 @@ class WordController extends Controller {
             $_SESSION['word'] = $word;
 
             $this->redirect('/');
-
-//            var_dump($word->getTranslate()[0]);exit;
         }
     }
 }

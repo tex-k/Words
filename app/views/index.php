@@ -23,7 +23,16 @@
         <label for="form-search-input-en">Английская фраза</label>
         <br>
         <input name="en" type="text" id="form-search-input-en" value="<?= ($word) ? $word->getValue() : '' ?>">
-        <span><?= ($word) ? $word->getTranslate()[0] : '' ?></span>
+        <span>
+            <?php
+            if ($word) {
+                $translation = $word->getTranslate();
+                for ($i = 0; $i < count($translation); $i++) {
+                    echo $translation[$i] . ((count($translation) > ($i + 1)) ? ', ' : '');
+                }
+            }
+            ?>
+        </span>
     </div>
     <div class="form-search__block">
         <label for="form-search-input-ru">Русская фраза</label>

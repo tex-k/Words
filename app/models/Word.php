@@ -58,6 +58,9 @@ class Word {
         return $this->translate;
     }
 
+    /**
+     * Записывает фразу и перевод в таблицы
+     */
     public function record()
     {
         $value = $this->value;
@@ -65,13 +68,19 @@ class Word {
 
         $generator = (new StrGenerator());
 
-        $idEn = $generator->generate();
-        $idRu = $generator->generate();
-        $idRel = $generator->generate();
+        $ruId = $generator->generate();
+        $relId = $generator->generate();
 
-        Db::getConn()->query("INSERT INTO en (id, word) VALUES ('$idEn', '$value')");
-        Db::getConn()->query("INSERT INTO ru (id, word) VALUES ('$idRu', '$translate')");
-        Db::getConn()->query("INSERT INTO relation (id, enId, ruId) VALUES ('$idRel', '$idEn', '$idRu')");
+        $result = Db::getConn()->query("SELECT * FROM en WHERE word = '$value'");
+        if ($result) {
+            $enId = $result->fetch_assoc()['id'];
+        } else {
+            $enId = $generator->generate();
+            Db::getConn()->query("INSERT INTO en (id, word) VALUES ('$enId', '$value')");
+        }
+
+        Db::getConn()->query("INSERT INTO ru (id, word) VALUES ('$ruId', '$translate')");
+        Db::getConn()->query("INSERT INTO relation (id, enId, ruId) VALUES ('$relId', '$enId', '$ruId')");
     }
 
     public function get()
@@ -79,13 +88,18 @@ class Word {
         $value = $this->value;
 
         if ($this->lang == 'en') {
-            $en = Db::getConn()->query("SELECT * FROM en WHERE word = '$value'")->fetch_assoc();
-            $en =$en['id'];
-            $relation = Db::getConn()->query("SELECT * FROM relation WHERE enId = '$en'")->fetch_assoc();
-            $relation = $relation['ruId'];
-            $ru = Db::getConn()->query("SELECT * FROM ru WHERE id = '$relation'")->fetch_assoc();
+            $enRow = Db::getConn()->query("SELECT * FROM en WHERE word = '$value'")->fetch_assoc();
+            $enId = $enRow['id'];
 
-            array_push($this->translate, $ru['word']);
+            $relationRows = Db::getConn()->query("SELECT * FROM relation WHERE enId = '$enId'");
+
+            while ($relationRow = $relationRows->fetch_assoc()) {
+                $ruId = $relationRow['ruId'];
+
+                $ruRow = Db::getConn()->query("SELECT * FROM ru WHERE id = '$ruId'")->fetch_assoc();
+
+                array_push($this->translate, $ruRow['word']);
+            }
         }
     }
 }
