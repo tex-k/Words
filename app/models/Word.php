@@ -22,21 +22,8 @@ class Word {
 
         $relId = $generator->generate();
 
-        $enRow = Db::getConn()->query("SELECT * FROM en WHERE word = '$value'")->fetch_assoc();
-        if ($enRow) {
-            $enId = $enRow['id'];
-        } else {
-            $enId = $generator->generate();
-            Db::getConn()->query("INSERT INTO en (id, word) VALUES ('$enId', '$value')");
-        }
-
-        $ruRow = Db::getConn()->query("SELECT * FROM ru WHERE word = '$translate'")->fetch_assoc();
-        if ($ruRow) {
-            $ruId = $ruRow['id'];
-        } else {
-            $ruId = $generator->generate();
-            Db::getConn()->query("INSERT INTO ru (id, word) VALUES ('$ruId', '$translate')");
-        }
+        $enId = $this->findIfExists('en', $value, $generator);
+        $ruId = $this->findIfExists('ru', $translate, $generator);
 
         Db::getConn()->query("INSERT INTO relation (id, enId, ruId) VALUES ('$relId', '$enId', '$ruId')");
     }
@@ -84,12 +71,30 @@ class Word {
      */
     public function get()
     {
-//        $count = Db::getConn()->query("SELECT COUNT(*) as count FROM en")->fetch_assoc();
-
         $word = Db::getConn()->query("SELECT * FROM en ORDER BY RAND()")->fetch_assoc();
         $this->value = $word['word'];
 
         $this->translate();
+    }
+
+    /**
+     * Вспомогательная функция проверяет есть ли в таблице записываемое слово
+     * @param string $table
+     * @param string $value
+     * @param StrGenerator $generator
+     * @return string
+     */
+    private function findIfExists(string $table, string $value, StrGenerator $generator)
+    {
+        $row = Db::getConn()->query("SELECT * FROM $table WHERE word = '$value'")->fetch_assoc();
+        if ($row) {
+            $id = $row['id'];
+        } else {
+            $id = $generator->generate();
+            Db::getConn()->query("INSERT INTO $table (id, word) VALUES ('$id', '$value')");
+        }
+
+        return $id;
     }
 
     /**
