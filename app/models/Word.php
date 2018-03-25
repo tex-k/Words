@@ -62,7 +62,7 @@ class Word {
         $word = Db::getConn()->query("SELECT * FROM en ORDER BY RAND()")->fetch_assoc();
         $this->value = $word['word'];
 
-        $this->translate();
+        $this->translate($this->lang);
     }
 
     /**
