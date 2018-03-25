@@ -32,9 +32,20 @@ class WordController extends Controller
             $word->get();
 
             session_start();
-            $_SESSION['word'] = $word;
-
-            $this->redirect('/');
+            $_SESSION['wordEn'] = $word;
         }
+
+        if ($_POST['ru'] != '') {
+            $word = new Word();
+            $word->setLang('ru');
+            $word->setValue($_POST['ru']);
+
+            $word->get();
+
+            session_start();
+            $_SESSION['wordRu'] = $word;
+        }
+
+        $this->redirect('/');
     }
 }

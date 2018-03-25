@@ -1,6 +1,7 @@
 <?php
 /**
- * @var \app\models\Word $word
+ * @var \app\models\Word $wordEn
+ * @var \app\models\Word $wordRu
  */
 ?>
 <form action="/?c=word&a=record" class="form-new" method="post">
@@ -22,11 +23,11 @@
     <div class="form-search__block">
         <label for="form-search-input-en">Английская фраза</label>
         <br>
-        <input name="en" type="text" id="form-search-input-en" value="<?= ($word) ? $word->getValue() : '' ?>">
+        <input name="en" type="text" id="form-search-input-en" value="<?= ($wordEn) ? $wordEn->getValue() : '' ?>">
         <span>
             <?php
-            if ($word) {
-                $translation = $word->getTranslate();
+            if ($wordEn) {
+                $translation = $wordEn->getTranslate();
                 for ($i = 0; $i < count($translation); $i++) {
                     echo $translation[$i] . ((count($translation) > ($i + 1)) ? ', ' : '');
                 }
@@ -37,7 +38,17 @@
     <div class="form-search__block">
         <label for="form-search-input-ru">Русская фраза</label>
         <br>
-        <input name="ru" type="text" id="form-search-input-ru">
+        <input name="ru" type="text" id="form-search-input-ru" value="<?= ($wordRu) ? $wordRu->getValue() : '' ?>">
+        <span>
+            <?php
+            if ($wordRu) {
+                $translation = $wordRu->getTranslate();
+                for ($i = 0; $i < count($translation); $i++) {
+                    echo $translation[$i] . ((count($translation) > ($i + 1)) ? ', ' : '');
+                }
+            }
+            ?>
+        </span>
     </div>
     <input class="submit" type="submit" value="Перевести">
 </form>

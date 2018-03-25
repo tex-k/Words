@@ -12,9 +12,13 @@ class Renderer
     public function render(String $view)
     {
         session_start();
-        if ($_SESSION['word']) {
-            $word = $_SESSION['word'];
-            $_SESSION['word'] = null;
+        if ($_SESSION['wordEn']) {
+            $wordEn = $_SESSION['wordEn'];
+            $_SESSION['wordEn'] = null;
+        }
+        if ($_SESSION['wordRu']) {
+            $wordRu = $_SESSION['wordRu'];
+            $_SESSION['wordRu'] = null;
         }
 
         ob_start();
