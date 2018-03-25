@@ -67,4 +67,11 @@ class WordController extends Controller
 
         $this->redirect('/?c=page&a=test');
     }
+
+//    protected function actionCheck()
+//    {
+//        if (($_POST['translate'] != '') && ($_GET['p'] != '')) {
+//
+//        }
+//    }
 }
