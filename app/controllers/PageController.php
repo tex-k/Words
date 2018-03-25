@@ -19,6 +19,11 @@ class PageController extends Controller
      */
     protected function actionTest()
     {
-        (new Renderer())->render("test");
+        session_start();
+        if ($_SESSION['wordEn']) {
+            (new Renderer())->render("test");
+        } else {
+            $this->redirect('/?c=word&a=get');
+        }
     }
 }
