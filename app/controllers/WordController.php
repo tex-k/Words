@@ -23,31 +23,12 @@ class WordController extends Controller
     }
 
     /**
-     * Получает перевод слова из БД
+     * Делает перевод слова
      */
     protected function actionTranslate()
     {
-        if ($_POST['en'] != '') {
-            $word = new Word();
-            $word->setLang('en');
-            $word->setValue($_POST['en']);
-
-            $word->translate();
-
-            session_start();
-            $_SESSION['wordEn'] = $word;
-        }
-
-        if ($_POST['ru'] != '') {
-            $word = new Word();
-            $word->setLang('ru');
-            $word->setValue($_POST['ru']);
-
-            $word->translate();
-
-            session_start();
-            $_SESSION['wordRu'] = $word;
-        }
+        $this->makeTranslate('en');
+        $this->makeTranslate('ru');
 
         $this->redirect('/');
     }
@@ -66,5 +47,23 @@ class WordController extends Controller
         $_SESSION['wordEn'] = $word;
 
         $this->redirect('/?c=page&a=test');
+    }
+
+    /**
+     * Вспомогательная функция выполняет перевод с языка, передаваемого в качестве параметра
+     * @param string $lang
+     */
+    private function makeTranslate(string $lang)
+    {
+        if ($_POST[$lang] != '') {
+            $word = new Word();
+            $word->setLang($lang);
+            $word->setValue($_POST[$lang]);
+
+            $word->translate();
+
+            session_start();
+            $_SESSION['word' . ucfirst($lang)] = $word;
+        }
     }
 }
