@@ -57,10 +57,9 @@ class WordController extends Controller
     {
         if ($_POST[$lang] != '') {
             $word = new Word();
-            $word->setLang($lang);
             $word->setValue($_POST[$lang]);
 
-            $word->translate();
+            $word->translate($lang);
 
             session_start();
             $_SESSION['word' . ucfirst($lang)] = $word;

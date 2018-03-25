@@ -30,39 +30,27 @@ class Word {
 
     /**
      * Получает перевод слова из БД по значению
+     * @param string $lang
      */
-    public function translate()
+    public function translate(string $lang)
     {
+        $this->lang = $lang;
+        $lang2 = ($lang == 'en') ? 'ru' : 'en';
         $value = $this->value;
 
-        if ($this->lang == 'en') {
-            $enRow = Db::getConn()->query("SELECT * FROM en WHERE word = '$value'")->fetch_assoc();
-            $enId = $enRow['id'];
+        $row = Db::getConn()->query("SELECT * FROM $lang WHERE word = '$value'")->fetch_assoc();
+        $id = $row['id'];
 
-            $relationRows = Db::getConn()->query("SELECT * FROM relation WHERE enId = '$enId'");
+        $param = $lang . 'Id';
 
-            while ($relationRow = $relationRows->fetch_assoc()) {
-                $ruId = $relationRow['ruId'];
+        $relationRows = Db::getConn()->query("SELECT * FROM relation WHERE $param = '$id'");
 
-                $ruRow = Db::getConn()->query("SELECT * FROM ru WHERE id = '$ruId'")->fetch_assoc();
+        while ($relationRow = $relationRows->fetch_assoc()) {
+            $id = $relationRow[$lang2 . 'Id'];
 
-                array_push($this->translate, $ruRow['word']);
-            }
-        }
+            $row = Db::getConn()->query("SELECT * FROM $lang2 WHERE id = '$id'")->fetch_assoc();
 
-        if ($this->lang == 'ru') {
-            $ruRow = Db::getConn()->query("SELECT * FROM ru WHERE word = '$value'")->fetch_assoc();
-            $ruId = $ruRow['id'];
-
-            $relationRows = Db::getConn()->query("SELECT * FROM relation WHERE ruId = '$ruId'");
-
-            while ($relationRow = $relationRows->fetch_assoc()) {
-                $enId = $relationRow['enId'];
-
-                $enRow = Db::getConn()->query("SELECT * FROM en WHERE id = '$enId'")->fetch_assoc();
-
-                array_push($this->translate, $enRow['word']);
-            }
+            array_push($this->translate, $row['word']);
         }
     }
 
