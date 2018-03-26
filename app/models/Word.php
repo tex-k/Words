@@ -56,10 +56,13 @@ class Word {
 
     /**
      * Получает случайное слово из БД и переводит его
+     * @param string $lang
      */
-    public function get()
+    public function get(string $lang)
     {
-        $word = Db::getConn()->query("SELECT * FROM en ORDER BY RAND()")->fetch_assoc();
+        $this->lang = $lang;
+
+        $word = Db::getConn()->query("SELECT * FROM $lang ORDER BY RAND()")->fetch_assoc();
         $this->value = $word['word'];
 
         $this->translate($this->lang);

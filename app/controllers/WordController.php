@@ -34,19 +34,22 @@ class WordController extends Controller
     }
 
     /**
-     * Получает случайное словои из БД
+     * Получает случайное слово из БД
      */
     protected function actionGet()
     {
-        $word = new Word();
-        $word->setLang('en');
+        if ($_GET['p'] == '') {
+            $this->redirect('/?c=page&a=error');
+        }
 
-        $word->get();
+        $word = new Word();
+
+        $word->get($_GET['p']);
 
         session_start();
-        $_SESSION['wordEn'] = $word;
+        $_SESSION['word' . ucfirst($word->getLang())] = $word;
 
-        $this->redirect('/?c=page&a=test');
+        $this->redirect('/?c=page&a=test&p=' . $word->getLang());
     }
 
     /**

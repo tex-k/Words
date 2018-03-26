@@ -4,6 +4,7 @@ $bgc-page: lightblue
 $bgc-header: royalblue
 $bgc-header-highlight: dodgerblue
 $font-color: midnightblue
+$height-switch: 20px
 
 *
   margin: 0 auto
@@ -11,6 +12,9 @@ $font-color: midnightblue
 
 a
   text-decoration: none
+
+.clr
+  clear: both
 
 .container
   width: $width-page
@@ -76,3 +80,30 @@ a
   margin-top: 30px
   &__block
     color: $font-color
+
+//-------------------Тест-------------------
+
+.switcher
+  width: 195px
+  float: left
+  &__label
+    &_1
+      float: left
+      margin-right: 5px
+    &_2
+      float: right
+
+
+.switch
+  width: 50px
+  height: $height-switch
+  background-color: white
+  border-radius: 10px
+  display: inline-block
+  margin-bottom: 20px
+  &__handle
+    width: $height-switch
+    height: $height-switch
+    background-color: $bgc-header-highlight
+    border-radius: 10px
+    float: left
