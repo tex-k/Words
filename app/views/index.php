@@ -1,5 +1,6 @@
 <?php
 /**
+ * @var array $words
  * @var \app\models\Word $wordEn
  * @var \app\models\Word $wordRu
  */
@@ -52,3 +53,17 @@
     </div>
     <input class="submit" type="submit" value="Перевести">
 </form>
+
+<div class="new-words">
+    <div class="new-words__words">
+        <?php
+        if ($words != 'nowords') {
+            foreach ($words as $key => $value) {
+                echo $key . ' - ' . $value . '<br>';
+            }
+        }
+        ?>
+    </div>
+</div>
+<div class="clr"></div>
+<a href="/?c=word&a=clear" class="clear">Очистить</a>

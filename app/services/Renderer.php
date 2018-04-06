@@ -20,6 +20,10 @@ class Renderer
             $wordRu = $_SESSION['wordRu'];
             $_SESSION['wordRu'] = null;
         }
+        if ($_SESSION['words']) {
+            $words = $_SESSION['words'];
+            $_SESSION['words'] = null;
+        }
 
         ob_start();
         include ROOT . "views/" . $view . ".php";

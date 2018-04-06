@@ -11,7 +11,12 @@ class PageController extends Controller
      */
     protected function actionIndex()
     {
-        (new Renderer())->render("index");
+        session_start();
+        if ($_SESSION['words']) {
+            (new Renderer())->render("index");
+        } else {
+            $this->redirect('/?c=word&a=last');
+        }
     }
 
     /**

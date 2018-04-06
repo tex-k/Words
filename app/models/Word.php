@@ -21,11 +21,13 @@ class Word {
         $generator = (new StrGenerator());
 
         $relId = $generator->generate();
+        $lastId = $generator->generate();
 
         $enId = $this->findIfExists('en', $value, $generator);
         $ruId = $this->findIfExists('ru', $translate, $generator);
 
         Db::getConn()->query("INSERT INTO relation (id, enId, ruId) VALUES ('$relId', '$enId', '$ruId')");
+        Db::getConn()->query("INSERT INTO lastWords (id, en, ru) VALUES ('$lastId', '$value', '$translate')");
     }
 
     /**

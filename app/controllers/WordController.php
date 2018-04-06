@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Word;
+use app\services\Db;
 
 class WordController extends Controller
 {
@@ -50,6 +51,39 @@ class WordController extends Controller
         $_SESSION['word' . ucfirst($word->getLang())] = $word;
 
         $this->redirect('/?c=page&a=test&p=' . $word->getLang());
+    }
+
+    /**
+     * Берёт из БД последнюю партию записанных слов
+     */
+    protected function actionLast()
+    {
+        $words = [];
+
+        $query = Db::getConn()->query("SELECT * FROM lastWords");
+
+        while ($word = $query->fetch_assoc()) {
+            $words[$word['en']] = $word['ru'];
+        }
+
+        session_start();
+        if ($words) {
+            $_SESSION['words'] = $words;
+        } else {
+            $_SESSION['words'] = 'nowords';
+        }
+
+        $this->redirect('/?c=page');
+    }
+
+    /**
+     * Очищает таблицу последних слов
+     */
+    protected function actionClear()
+    {
+        Db::getConn()->query("DELETE FROM lastWords");
+
+        $this->redirect('/?c=page');
     }
 
     /**
